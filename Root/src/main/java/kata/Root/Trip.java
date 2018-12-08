@@ -1,47 +1,107 @@
 package kata.Root;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.sql.Time;
-
 public class Trip {
 	
-	Driver name;		  // driverFields[1]
-	Time startTrip;		  // driverFields[2]
-	Time endTrip;		  // driverFields[3]
-	Float avgMilesDriven; // driverFields[4]
+	private String startTrip;		
+	private String endTrip;	
+	private Double distanceTraveled; 
+	private Date startTime;
+	private Date endTime;
 	
+	protected Trip(String startTrip, String endTrip, double distance) {
+		this.startTrip = startTrip;
+		this.endTrip = endTrip;
+		this.distanceTraveled = distance;
+	}
 
-//	public void getTripData () {
-//		if (driverFields[0].contentEquals("Trip")) {
-//			trip.setName();
-//		}
+	protected double getAvgSpeed() throws ParseException {
+		LocalTime start = LocalTime.parse((CharSequence) startTime);
+		LocalTime stop = LocalTime.parse((CharSequence) endTime);
+		long timeMin = start.until(stop, ChronoUnit.MINUTES);
+		double timeHr = (timeMin / (double) 60);
+		double speed = distanceTraveled / timeHr;
+		return speed;
+	}
+	
+/////////////////////First Attempt//////////////////////////////////////
+//	protected Long getTripLength(Date startTime, Date endTime) {
+//		long timeDiff = endTime.getTime() - startTime.getTime();
+//        long tripDuration = timeDiff / (60 * 1000) % 60;
+//        return tripDuration;
+//	}//      long diffSeconds = timeDiff / 1000 % 60;
+	
+	
+	
+	//////////////START TIME//////////////////
+	
+//	protected Date getStartTime() {
+//		return startTime;
+//	}
+//	protected void setStartTime(String startTrip) throws ParseException {
+//		DateFormat tripFormatter = new SimpleDateFormat("hh:mm");
+//		startTime = tripFormatter.parse(startTrip);
 //	}
 	
-	public Driver getName() {
-		return name;
+	///////////////END TIME/////////////////////
+	
+//	protected Date getEndTime() {
+//		return endTime;
+//	}
+//	protected void setEndTime(String endTrip) throws ParseException {
+//		DateFormat tripFormatter = new SimpleDateFormat("hh:mm");
+//		endTime = tripFormatter.parse(endTrip);
+//	}
+/* I am keeping this because I believe it prudent to keep my attempt code
+ * for possible future reference.
+ */
+	
+////////////////////////////////////////////////////////////////////////
+	
+	protected Double getDistanceTraveled() {
+		return distanceTraveled;
 	}
-	public void setName(Driver name) {
-		this.name = name;
+	protected void setDistanceTraveled(String distance) {
+		this.distanceTraveled = Double.parseDouble(distance);
 	}
-	public Time getStartTrip() {
+	/////////////SET trip start time/////////////////
+	protected String getStartTrip() {
 		return startTrip;
 	}
-	public void setStartTrip(String[] driverFields) {
-		this.startTrip = Time.valueOf(driverFields[2]);
+	protected void setStartTrip(String startTrip) {
+		this.startTrip = startTrip;
 	}
-	public Time getEndTrip() {
+	///////////////////////////////////////
+	protected String getEndTrip() {
 		return endTrip;
 	}
-	public void setEndTrip(String[] driverFields) {
-		this.endTrip = Time.valueOf(driverFields[3]);
-	}
-	public Float getAvgMilesDriven() {
-		return avgMilesDriven;
-	}
-	public void setAvgMilesDriven(String[] driverFields) {
-		this.avgMilesDriven = Float.parseFloat(driverFields[4]);
+	protected void setEndTrip(String endTrip) {
+		this.endTrip = endTrip;
 	}
 	
+	
+	
 }
+//String startTime = "9:00 AM";
+//String endTime = "10:00 AM";
+//SimpleDateFormat formatter = new SimpleDateFormat("h:mm a");
+//Date st = formatter.parse(time1);
+//Date ed = formatter.parse(time2);
+//long timeDiff = ed.getTime() - st.getTime();
+//Date diff = new Date(timeDiff);
+//System.out.println(formatter.format(diff));
+//
+//long timeDiff = d2.getTime() - d1.getTime();
+//System.out.println((timeDiff / 3600000) + " hour/s " + (timeDiff % 3600000) / 60000 + " minutes");
+//Output
+//1 hour/s 5 minutes
 //Example input:
 //
 //Driver Dan

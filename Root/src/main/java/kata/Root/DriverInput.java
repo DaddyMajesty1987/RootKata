@@ -7,8 +7,6 @@ import java.util.Scanner;
 
 public class DriverInput {
 
-	Driver driver = new Driver(null, false);
-	
 	private String[] dataInput() throws FileNotFoundException {
 		
 		File itemFile = new File("driverData.csv");	
@@ -30,19 +28,28 @@ public class DriverInput {
 	 * I chose to delimit via spaces given the format of the 
 	 * example input given in the instructions. */
 	
-//	public void registerDriver(String[] driverFields) {
-//		if (driverFields[0].contentEquals("Driver")) {
-//			driver.;
-//		}
-//		else {
-//			registered = false;
-//
-//	}
+	public void configureDriverData(String[] driverFields) {
+		
+		if (driverFields[0].contentEquals("Driver")) {
+			Driver driver = new Driver();
+			driver.setName(driverFields[1]);
+			driver.setRegistered(true);
+		}
+		else if(driverFields[0].contentEquals("Trip")) {
+			Trip trip = new Trip();
+			trip.setStartTrip(driverFields[2]);
+			trip.setEndTrip(driverFields[3]);
+			trip.setDistanceTraveled(driverFields[4]);
+		}
+	}
 	/* Per instructions, if "Driver" comes before a name in 
 	 * the input file, then the command or status of the person
 	 * being registered is true.
+	 * if "Trip" is detected then a trip object is created.
 	 */
-	
+	public void createTrip(String[] driverFields) {
+		
+	}
 	
 	
 

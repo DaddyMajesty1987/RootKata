@@ -10,7 +10,9 @@ public class RegisterDriverTest {
 	
 	@Before
 	public void setup() {
-		driver = new Driver("Matt", true);
+		driver = new Driver();
+		driver.setName("Matt");
+		driver.setRegistered(true);
 	}
 	//establishes mock driver object
 	

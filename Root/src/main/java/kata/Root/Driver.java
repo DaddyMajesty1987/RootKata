@@ -1,29 +1,28 @@
 package kata.Root;
 
 public class Driver {
-
+	
+	private Trip trip = new Trip();
+/* attributes the trip data to the name 
+   of the driver who is registered.
+*/	
 	private String name;
 	private boolean registered;
 	
-	public Driver(String name, boolean registeredDriver) {
-		this.name = name;    
-		this.registered = registeredDriver;
-	}
-	
-	public boolean isRegistered() {
+	protected boolean isRegistered() {
 		return registered;
 	}
 
-	public void setRegistered(boolean registered) { // revisit
+	protected void setRegistered(boolean registered) { // revisit
 		this.registered = registered;
 	}
 
-	public String getName() {
+	protected String getName() {
 		return name;
 	}
 
-	public void setName(String[] driverFields) {
-		this.name = driverFields[1];
+	protected void setName(String name) {
+		this.name = name;
 	}
 }
 //Example input:
