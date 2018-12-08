@@ -1,26 +1,18 @@
 package kata.Root;
-import java.util.Scanner;
+
+import java.text.ParseException;
+
 /**
  * Hello world!
  *
  */
 public class App {
 	
-	public static void main( String[] args ) {
-        System.out.println( "enter a number" );
+	public static void main( String[] args ) throws ParseException {
+        Trip trip = new Trip("Matt", "07:15", "07:45", 30);
+         
+		System.out.println(trip.getAvgSpeed());
   
-        double num;
-          
-        Scanner s = new Scanner(System.in);
-        num = s.nextDouble();
-          
-        if(num > 0) {
-          System.out.println("positive");
-        }
-        else if(num < 0) {
-          System.out.println("negative");
-        }
-        
 	
 	}
     

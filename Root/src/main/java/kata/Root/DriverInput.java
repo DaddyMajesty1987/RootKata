@@ -11,12 +11,12 @@ public class DriverInput {
 		
 		File itemFile = new File("driverData.csv");	
 		Scanner itemInfo = new Scanner(itemFile);
-		String[] driverFields = null;
+		String[] fileFields = null;
 		while (itemInfo.hasNextLine()) {
 			String line = itemInfo.nextLine();
-			driverFields = line.split(" ");
+			fileFields = line.split(" ");
 		}
-		return driverFields;	
+		return fileFields;	
 	}
 	/* I chose to make this method private due to only this class 
 	 * needs to utilize this method.	
@@ -28,18 +28,18 @@ public class DriverInput {
 	 * I chose to delimit via spaces given the format of the 
 	 * example input given in the instructions. */
 	
-	public void configureDriverData(String[] driverFields) {
+	protected void configureDriverData(String[] fileFields) {
 		
-		if (driverFields[0].contentEquals("Driver")) {
+		if (fileFields[0].contentEquals("Driver")) {
 			Driver driver = new Driver();
-			driver.setName(driverFields[1]);
+			driver.setName(fileFields[1]);
 			driver.setRegistered(true);
 		}
-		else if(driverFields[0].contentEquals("Trip")) {
+		else if(fileFields[0].contentEquals("Trip")) {
 			Trip trip = new Trip();
-			trip.setStartTrip(driverFields[2]);
-			trip.setEndTrip(driverFields[3]);
-			trip.setDistanceTraveled(driverFields[4]);
+			trip.setStartTrip(fileFields[2]);
+			trip.setEndTrip(fileFields[3]);
+			trip.setDistanceTraveled(fileFields[4]);
 		}
 	}
 	/* Per instructions, if "Driver" comes before a name in 
@@ -47,7 +47,7 @@ public class DriverInput {
 	 * being registered is true.
 	 * if "Trip" is detected then a trip object is created.
 	 */
-	public void createTrip(String[] driverFields) {
+	public void createTrip(String[] fileFields) {
 		
 	}
 	
